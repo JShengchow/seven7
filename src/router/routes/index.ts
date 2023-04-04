@@ -5,6 +5,7 @@ const NotFind = () => import('../../pages/404/index.vue')
 const Login = () => import('../../pages/login/index.vue')
 const DashBoard = () => import('../../pages/dashboard/index.vue')
 const Weight = () => import('../../pages/funcs/weight/index.vue')
+const Menstruation = () => import('../../pages/funcs/menstruation/index.vue')
 
 const routes: RouteRecordRaw[] = [
   { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFind },
@@ -27,6 +28,11 @@ const routes: RouteRecordRaw[] = [
     path: '/funs/weight',
     name: 'weight',
     component: Weight
+  },
+  {
+    path: '/funs/menstruation',
+    name: 'menstruation',
+    component: Menstruation
   }
 ]
 

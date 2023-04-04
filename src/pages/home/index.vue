@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <h1 class="title">时光恋人</h1>
+    <h1 class="title">7号小屋</h1>
     <!-- 简介 -->
     <section class="introduce">
       <p v-for="(item, index) in introduces" :key="index">{{ item }}</p>
@@ -9,8 +9,8 @@
       <p>
         <router-link to="/login">
           <van-button size="small" round :color="loginColor"
-            >点击体验</van-button
-          >
+            >点击体验
+          </van-button>
         </router-link>
       </p>
     </section>
@@ -19,7 +19,10 @@
 <script lang="ts" setup>
 import { reactive } from 'vue'
 
-const introduces: string[] = reactive(['记录情侣之间', '日常生活趣事,生活足迹'])
+const introduces: string[] = reactive([
+  '记录情侣之间',
+  '日常生活趣事，生活足迹'
+])
 const loginColor =
   'linear-gradient(to right, #b8cbb8 0%, #b8cbb8 0%, #b465da 0%, #cf6cc9 33%, #ee609c 66%, #ee609c 100%)'
 </script>

@@ -3,7 +3,7 @@
     <h1>
       欢迎登录
       <span>
-        <router-link to="/">时光恋人</router-link>
+        <router-link to="/">7号小屋</router-link>
       </span>
     </h1>
     <div class="input-list">
@@ -14,7 +14,13 @@
         icon="phone-o"
         :max-length="11"
       />
-      <UnderInput tips="4位数字" v-model="code" placeholder="输入收到的验证码" icon="like-o" :max-length="4" />
+      <UnderInput
+        tips="4位数字"
+        v-model="code"
+        placeholder="输入收到的验证码"
+        icon="like-o"
+        :max-length="4"
+      />
     </div>
     <div class="btn-list">
       <van-button
@@ -24,7 +30,8 @@
         block
         size="small"
         type="primary"
-      >{{ codeText }}</van-button>
+        >{{ codeText }}</van-button
+      >
       <van-button
         :disabled="disableLogin"
         color="linear-gradient(120deg, #f093fb 0%, #f5576c 100%)"
@@ -32,14 +39,16 @@
         block
         size="small"
         type="primary"
-      >登录</van-button>
+        >登录</van-button
+      >
       <van-button
         color="linear-gradient(120deg, #f093fb 0%, #f5576c 100%)"
         @click="handleTestLogin"
         block
         size="small"
         type="primary"
-      >使用测试号体验</van-button>
+        >使用测试号体验</van-button
+      >
     </div>
   </div>
 </template>
@@ -99,7 +108,7 @@ const handleLogin = () => {
       // 持久化登录凭证
       // 登陆成功跳转
       router.replace({
-        name: 'dashboard',
+        name: 'dashboard'
       })
     })
     .catch(() => {
@@ -107,10 +116,14 @@ const handleLogin = () => {
     })
 }
 // 禁用登录按钮
-const disableLogin = computed(() => !rCode.test(code.value) || !rMobile.test(phone.value))
+const disableLogin = computed(
+  () => !rCode.test(code.value) || !rMobile.test(phone.value)
+)
 
 // 禁用验证码按钮
-const disableCode = computed(() => !rMobile.test(phone.value) || time.value !== 0)
+const disableCode = computed(
+  () => !rMobile.test(phone.value) || time.value !== 0
+)
 
 const handleTestLogin = () => {
   userApi.login('13245678910', '1234').then((res) => {
@@ -120,7 +133,7 @@ const handleTestLogin = () => {
     // 持久化登录凭证
     // 登陆成功跳转
     router.replace({
-      name: 'dashboard',
+      name: 'dashboard'
     })
   })
 }
@@ -129,7 +142,7 @@ const handleTestLogin = () => {
 onMounted(() => {
   if (localStorage.getItem('token')) {
     router.replace({
-      name: 'dashboard',
+      name: 'dashboard'
     })
   }
 })

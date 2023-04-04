@@ -1,11 +1,11 @@
 {
   "version": "2.0",
-  "envId": "time-lover-1g02fg37bf3148fa",
+  "envId": "seven7-server-2gu1u3q6739a16ff",
   "region": "ap-shanghai",
   "$schema": "https://framework-1258016615.tcloudbaseapp.com/schema/latest.json",
   "functionRoot": "cloudfunctions",
   "framework": {
-    "name": "time-lover",
+    "name": "seven7",
     "plugins": {
       "client": {
         "use": "@cloudbase/framework-plugin-website",

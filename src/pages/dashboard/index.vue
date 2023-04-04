@@ -2,28 +2,35 @@
   <div class="dashboard">
     <div class="card-list">
       <router-link to="/funs/weight" class="card-item">
-        <FunCard title="体重记录" bg-color="#07c160" icon="icon-tizhongcheng" />
+        <FunCard title="体重记录" bg-color="#1BBC9B" icon="icon-tizhongcheng" />
+      </router-link>
+      <router-link to="/funs/weight" class="card-item">
+        <FunCard title="记录月经" bg-color="#19B5FE" icon="icon-tizhongcheng" />
       </router-link>
       <div class="card-item">
-        <FunCard title="相册" disabled icon="icon-zhaopian1" />
+        <FunCard title="点滴我们" disabled icon="icon-dashijianguanli" />
       </div>
       <div class="card-item">
-        <FunCard title="大事记" disabled icon="icon-dashijianguanli" />
+        <FunCard title="照片墙" disabled icon="icon-zhaopian1" />
       </div>
       <div class="card-item">
         <FunCard title="敬请期待" icon="icon-gengduo" />
       </div>
     </div>
-    <router-link to="/" class="go-home">
+    <router-link to="/" class="operator go-home">
       <van-icon name="wap-home-o" />
     </router-link>
-    <div class="exit" @click="handleLogout">
+    <div class="operator share" @click="handleShare">
+      <van-icon name="share-o" />
+    </div>
+    <div class="operator exit" @click="handleLogout">
       <van-icon name="close" />
     </div>
   </div>
 </template>
 <script lang="ts" setup>
-import { Dialog } from 'vant'
+import { Dialog, Notify } from 'vant'
+
 import { useRouter } from 'vue-router'
 import FunCard from './components/FunCard.vue'
 
@@ -40,6 +47,9 @@ const handleLogout = () => {
     .catch(() => {
       // on cancel
     })
+}
+const handleShare = () => {
+  Notify({ type: 'success', message: '链接已复制，快去分享给ta吧！' })
 }
 </script>
 
@@ -61,10 +71,10 @@ const handleLogout = () => {
     margin-bottom: 1rem;
   }
 }
-.go-home {
+.operator {
   position: fixed;
   right: 2rem;
-  bottom: 4rem;
+  bottom: 1rem;
   font-size: 2rem;
   border-radius: 50%;
   width: 2.5rem;
@@ -73,17 +83,17 @@ const handleLogout = () => {
   padding-top: 0.2rem;
   background-color: #fff;
 }
+.go-home {
+  right: 2rem;
+  bottom: 2rem;
+}
 
 .exit {
-  position: fixed;
   right: 2rem;
-  bottom: 1rem;
-  font-size: 2rem;
-  border-radius: 50%;
-  width: 2.2rem;
-  height: 2.2rem;
-  padding: 0.2rem;
-  text-align: center;
-  background-color: #fff;
+  bottom: 6rem;
+}
+.share {
+  right: 2rem;
+  bottom: 10rem;
 }
 </style>
