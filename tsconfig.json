@@ -3,18 +3,20 @@
     "target": "esnext",
     "module": "esnext",
     "moduleResolution": "node",
-    "strict": true,
+    "strict": false,
     "jsx": "preserve",
     "sourceMap": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "allowJs": true,
     "lib": ["esnext", "dom"],
-    "types": ["vite/client", "@types/node", "vitest/globals"],
+    "types": ["vite/client","@types/node","jest"],
     "baseUrl": "./",
     "paths": {
-      "@/*": ["src/*"],
-      "@components/": ["src/components/*"]
+      "@/*": [
+        "src/*"
+      ],
+      "@components/":["src/components/*"]
     }
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],

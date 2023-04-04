@@ -1,53 +1,59 @@
-# Vite3.x + Vue 3.x + Typescript
+# TimeLover(时光恋人)
+>重启两年前的项目
+## 简介
+一款情侣之间记录日常生活趣事,生活足迹的Web应用
 
-[preview](https://http://vite.vue3.sugarat.top/)
-## Features
-### PROD
-* [x] [Vue3](https://vuejs.org/)
-* [x] [Pinia](https://pinia.vuejs.org/) - replace vuex
-* [x] [Vue-Router](https://router.vuejs.org/)
-* [x] [Axios](https://github.com/axios/axios)
-* [x] [Provide/inject](https://v3.vuejs.org/guide/component-provide-inject.html#provide-inject)
-* [x] [polyfill.io](https://github.com/Financial-Times/polyfill-service)
-* [x] [Element UI Plus](https://github.com/element-plus/element-plus)
+## 效果
+| 首页                                                                                        | 登录                                                                                        | 菜单                                                                                        | 体重记录                                                                                    |
+| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| <img width="200" src="https://img.cdn.sugarat.top/mdImg/MTYzNzQ4NTA2MzkyMw==637485063923"/> | <img width="200" src="https://img.cdn.sugarat.top/mdImg/MTYzNzQ4NTE1MDExNQ==637485150115"/> | <img width="200" src="https://img.cdn.sugarat.top/mdImg/MTYzNzQ4NTE5OTA2MA==637485199060"/> | <img width="200" src="https://img.cdn.sugarat.top/mdImg/MTYzNzQ4NTI1ODAxMw==637485258013"/> |
+## 功能介绍
+### 基础
+* [x] 验证码登录
 
-### DEV
-* [x] [Vite](https://github.com/vitejs/vite)
-* [x] [TypeScript](https://github.com/microsoft/TypeScript/#readme)
-* [x] [Sass](https://github.com/sass/sass)
-* [x] [Eslint](https://eslint.org/)
-* [x] [Prettier](https://prettier.io/)
-* [x] [Vitest](https://vitest.dev/) - replace jest
+### 体重记录
+* [x] 记录体重信息
+* [x] 多样化/个性化的数据统计
 
-## Use This Template
-```sh
-npx degit atqq/vite-vue3-template#main my-project
-```
-or
+<!--旧
+* 基础
+  * 登录
+  * 注册
+  * 重置密码
+  * 完善个人信息
+  * 绑定恋人账号
+* 核心
+  * 发表纪念日信息
+  * 足迹
+  * 为他/她打分
+* 开发中
+  * 一键呼唤对方起床
+  * 时间胶囊 -->
 
-Visit：[https://github.com/ATQQ/vite-vue3-template/generate](https://github.com/ATQQ/vite-vue3-template/generate)
-## Usage
-### install dep
-need install pnpm
-```sh
-npm i -g pnpm
-```
+## 技术方案
+* 前端：Vue3+TypeScript+Vite
+  * 组件库：Vant UI
+* 后端：Node+TypeScript
+  * 数据库：非关系型文档数据库
+* 部署：腾讯云Serverless
 
+## 相关文档
+* [数据库设计](./docs/db.md)
+* [接口设计](./docs/api.md)
+* [服务端仓库](https://github.com/ATQQ/time-lover-server)
+## 使用
+
+**安装依赖**
 ```sh
 pnpm install
 ```
 
-### Dev
+**开发启动**
 ```sh
 pnpm dev
 ```
 
-### Build
-```sh
-pnpm build
+**生产构建**
 ```
-
-### Preview Build
-```sh
-pnpm serve
+pnpm build
 ```

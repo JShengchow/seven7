@@ -1,29 +1,45 @@
 <template>
-  <router-view></router-view>
+  <div class="app">
+    <router-view></router-view>
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import 'vant/es/toast/style';
+import 'vant/es/dialog/style';
+import 'vant/es/notify/style';
+import 'vant/es/image-preview/style';
 
 export default defineComponent({
-  name: 'App'
+  name: 'App',
 })
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+* {
+  margin: 0;
+  /* padding: 0; */
 }
-a {
-  color: #2c3e50;
-  padding: 0 20px;
+@media screen and (min-width: 320px) {
+  html {
+    font-size: 12px;
+  }
 }
-.links {
-  text-align: center;
+@media screen and (min-width: 360px) {
+  html {
+    font-size: 13.5px;
+  }
+}
+@media screen and (min-width: 375px) {
+  html {
+    font-size: 14.0625px;
+  }
+}
+</style>
+<style scoped>
+.app {
+  max-width: 414px;
+  margin: 0 auto;
 }
 </style>
