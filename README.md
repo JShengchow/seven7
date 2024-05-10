@@ -1,53 +1,35 @@
-# Vite3.x + Vue 3.x + Typescript
+# seven
 
-[preview](https://http://vite.vue3.sugarat.top/)
-## Features
-### PROD
-* [x] [Vue3](https://vuejs.org/)
-* [x] [Pinia](https://pinia.vuejs.org/) - replace vuex
-* [x] [Vue-Router](https://router.vuejs.org/)
-* [x] [Axios](https://github.com/axios/axios)
-* [x] [Provide/inject](https://v3.vuejs.org/guide/component-provide-inject.html#provide-inject)
-* [x] [polyfill.io](https://github.com/Financial-Times/polyfill-service)
-* [x] [Element UI Plus](https://github.com/element-plus/element-plus)
+This template should help get you started developing with Vue 3 in Vite.
 
-### DEV
-* [x] [Vite](https://github.com/vitejs/vite)
-* [x] [TypeScript](https://github.com/microsoft/TypeScript/#readme)
-* [x] [Sass](https://github.com/sass/sass)
-* [x] [Eslint](https://eslint.org/)
-* [x] [Prettier](https://prettier.io/)
-* [x] [Vitest](https://vitest.dev/) - replace jest
+## Recommended IDE Setup
 
-## Use This Template
-```sh
-npx degit atqq/vite-vue3-template#main my-project
-```
-or
+[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
 
-Visit：[https://github.com/ATQQ/vite-vue3-template/generate](https://github.com/ATQQ/vite-vue3-template/generate)
-## Usage
-### install dep
-need install pnpm
-```sh
-npm i -g pnpm
-```
+## Customize configuration
+
+See [Vite Configuration Reference](https://vitejs.dev/config/).
+
+## Project Setup
 
 ```sh
 pnpm install
 ```
 
-### Dev
+### Compile and Hot-Reload for Development
+
 ```sh
 pnpm dev
 ```
 
-### Build
+### Compile and Minify for Production
+
 ```sh
 pnpm build
 ```
 
-### Preview Build
+### Lint with [ESLint](https://eslint.org/)
+
 ```sh
-pnpm serve
+pnpm lint
 ```
