@@ -3,15 +3,15 @@
     <div class="welcome-wrap">
       <div class="welcome-text">请输入唯一码</div>
       <div class="welcome-des">唯一码为进入系统唯一标识</div>
-      <van-field
-        ref="realInputRef"
-        class="welcome-input"
-        v-model="uniqueCode"
-        :maxlength="uniqueCodeLength"
-        :formatter="formatter"
-        placeholder="请输入唯一码"
-      />
       <div class="welcome-code" @click="handleCodeClick">
+        <van-field
+          ref="realInputRef"
+          class="welcome-input"
+          v-model="uniqueCode"
+          :maxlength="uniqueCodeLength"
+          :formatter="formatter"
+          placeholder="请输入唯一码"
+        />
         <div
           :class="[
             'welcome-code-item',
@@ -85,6 +85,7 @@ const handleLogin = () => {
   &-input {
     opacity: 0;
     height: 0;
+    width: 0;
     line-height: 0;
     padding: 0;
   }
@@ -103,6 +104,9 @@ const handleLogin = () => {
       border-radius: 8px;
       font-weight: 400;
       border: 1.5px solid #ebeff1;
+      &:last-child {
+        margin-right: 0;
+      }
     }
   }
   &-button {
