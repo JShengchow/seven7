@@ -1,124 +1,101 @@
 <template>
   <div class="welcome">
     <div class="welcome-wrap">
-      <div class="welcome-text">请输入唯一码</div>
-      <div class="welcome-des">唯一码为进入系统唯一标识</div>
-      <div class="welcome-code" @click="handleCodeClick">
-        <van-field
-          ref="realInputRef"
-          class="welcome-input"
-          v-model="uniqueCode"
-          :maxlength="uniqueCodeLength"
-          :formatter="formatter"
-          placeholder="请输入唯一码"
-        />
-        <div
-          :class="[
-            'welcome-code-item',
-            isFilled(index) && 'is-filled',
-            isCurrent(index) && 'is-current'
-          ]"
-          v-for="(item, index) in uniqueCodeShow"
-          :key="index"
-        >
-          {{ item }}
-        </div>
+      <div class="welcome-clock">
+        <h1 @click="toogleSecond">{{ currentTime }}</h1>
+        <h3>{{ todayDate }}</h3>
       </div>
-      <van-button
-        color="linear-gradient(135.00deg, rgb(198, 157, 255) 0%,rgb(79, 118, 255) 100%)"
-        block
-        @click="handleLogin"
-      >
-        <div class="welcome-button">
-          立即体验
-          <icon-ri-arrow-right-line />
-        </div>
-      </van-button>
+      <div class="welcome-search">
+        <el-select
+          v-model="selectedEngine"
+          placeholder="选择搜索引擎"
+          @change="handleEngineChange"
+          style="width: 100px"
+        >
+          <el-option label="百度" value="baidu"></el-option>
+          <el-option label="谷歌" value="google"></el-option>
+          <el-option label="必应" value="bing"></el-option>
+        </el-select>
+        <el-input
+          autofocus
+          ref="inputSearchRef"
+          v-model="inputSearch"
+          style="width: 240px"
+          placeholder="搜索"
+          @keyup.enter="handleSearch"
+        >
+          <template #suffix> <el-button text :icon="Search" @click="handleSearch" /> </template
+        ></el-input>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup>
-const realInputRef = ref(null)
-const handleCodeClick = () => {
-  realInputRef.value.focus()
-}
-const uniqueCode = ref('')
-const formatter = value => value.replace(/[^\w]/gi, '')
-const isFilled = index => {
-  return index < uniqueCode.value.length
-}
-const isCurrent = index => {
-  return index === uniqueCode.value.length
+import { ref } from 'vue'
+import { ElInput, ElButton } from 'element-plus'
+import { Search } from '@element-plus/icons-vue'
+import dayjs from 'dayjs'
+
+const inputSearch = ref('')
+const inputSearchRef = ref(null)
+const selectedEngine = ref('baidu') // 默认搜索引擎为百度
+
+const handleEngineChange = () => {
+  inputSearchRef.value.focus()
 }
 
-const uniqueCodeLength = 4
-const uniqueCodeShow = computed(() => {
-  const arr = new Array(uniqueCodeLength).fill('')
-  return arr.map((v, index) => {
-    return uniqueCode.value[index]
-  })
+const handleSearch = () => {
+  const query = encodeURIComponent(inputSearch.value.trim())
+  if (!query) return
+  let url = ''
+  if (selectedEngine.value === 'baidu') {
+    url = `https://www.baidu.com/s?wd=${query}`
+  } else if (selectedEngine.value === 'google') {
+    url = `https://www.google.com/search?q=${query}`
+  } else if (selectedEngine.value === 'bing') {
+    url = `https://www.bing.com/search?q=${query}`
+  }
+  inputSearch.value = ''
+  window.open(url, '_blank')
+}
+
+const isShowSecond = ref(false)
+const timeFormat = computed(() => (isShowSecond.value ? 'HH:mm:ss' : 'HH:mm'))
+
+const toogleSecond = () => {
+  isShowSecond.value = !isShowSecond.value
+}
+
+// 获取当前时间
+const currentTime = ref(dayjs().format(timeFormat.value))
+// 获取今日日期
+const todayDate = ref(dayjs().format('YYYY 年 MM 月 DD 日'))
+
+// 启动一个定时器来更新时间
+onMounted(() => {
+  setInterval(() => {
+    currentTime.value = dayjs().format(timeFormat.value)
+    todayDate.value = dayjs().format('YYYY 年 MM 月 DD 日')
+  }, 1000)
 })
-
-const router = useRouter()
-const handleLogin = () => {
-  router.push({ name: 'home' })
-}
 </script>
 
 <style lang="scss" scoped>
 .welcome {
-  font-family: '思源黑体';
-  color: #191c32;
-  padding: 20px;
-  &-text {
-    font-size: 32px;
-    font-weight: 400;
-    line-height: 52px;
-    letter-spacing: 0px;
-    text-align: left;
+  position: relative;
+  height: 100%;
+  .welcome-clock {
+    text-align: center;
   }
-  &-des {
-    font-size: 12px;
-    color: #9395a4;
-  }
-  &-input {
-    opacity: 0;
-    height: 0;
-    width: 0;
-    line-height: 0;
-    padding: 0;
-  }
-  &-code {
-    display: flex;
-    justify-content: space-between;
-    margin: 80px 0;
-    &-item {
-      margin-right: 20px;
-      width: 65px;
-      height: 65px;
-      line-height: 65px;
-      text-align: center;
-      background-color: #ebeff1;
-      font-size: 32px;
-      border-radius: 8px;
-      font-weight: 400;
-      border: 1.5px solid #ebeff1;
-      &:last-child {
-        margin-right: 0;
-      }
-    }
-  }
-  &-button {
+  .welcome-search {
     display: flex;
     align-items: center;
+    gap: 10px;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
-}
-.is-filled {
-  background-color: #fff;
-}
-.is-current {
-  border: 1.5px solid #81d1c5;
-  box-shadow: 0px 20px 40px 0px rgba(55, 62, 125, 0.1);
 }
 </style>
