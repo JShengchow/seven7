@@ -1,7 +1,9 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import ElementPlus from 'element-plus'
-import 'element-plus/dist/index.css'
+// import 'element-plus/dist/index.css'
+// 引入覆盖的scss样式
+import './assets/css/element.scss'
 
 import '@/styles/normalize.css'
 

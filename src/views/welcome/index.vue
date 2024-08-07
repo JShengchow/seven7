@@ -26,6 +26,7 @@
         >
           <template #suffix> <el-button text :icon="Search" @click="handleSearch" /> </template
         ></el-input>
+        <el-button type="primary">test</el-button>
       </div>
     </div>
   </div>
